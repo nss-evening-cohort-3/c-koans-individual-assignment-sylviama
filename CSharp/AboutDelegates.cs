@@ -10,7 +10,7 @@ namespace DotNetKoans.CSharp
 	{
 		//A delegate is a user defined type just like a class. 
 		//A delegate lets you reference methods with the same signature and return type.
-		//Once you have the reference to the method, pass them as paramters or call it via the delegate.
+		//Once you have the reference to the method, pass them as parameters or call it via the delegate.
 		//In other languages this is known as functions as first class citizens.
 
 		//Here is a delegate declaration
@@ -169,7 +169,7 @@ namespace DotNetKoans.CSharp
 		[Koan(14)]
 		public void BuiltInActionDelegateIsOverloaded()
 		{
-			//Action is an overloaded delegate so it can take more than one paramter
+			//Action is an overloaded delegate so it can take more than one parameter
 			Action<int, string> a = AssertAddEqualsFourtyTwo;
 			a(12, (string)FILL_ME_IN);
 		}
@@ -270,8 +270,8 @@ namespace DotNetKoans.CSharp
 			//  public delegate TResult Func<T, TResult>(T arg);
 			//Is very similar to the Action<> delegate. However, Func<> does not require any parameters, while does require returns a value.
 			//The last type parameter specifies the return type. If you only specify a single 
-			//type, Func<int>, then the method takes no paramters and returns an int.
-			//If you specify more than one parameter, then you are specifying the paramter types as well.
+			//type, Func<int>, then the method takes no parameters and returns an int.
+			//If you specify more than one parameter, then you are specifying the parameter types as well.
 
 			Func<string> d = FirstMonth;
 			Assert.Equal(FILL_ME_IN, d());

@@ -19,7 +19,7 @@ namespace AutoKoanRunner
 		{
 			if (Array.TrueForAll(KoanSource.Sources, source => Directory.Exists(source.SourceFolder)) == false)
 			{
-				Console.WriteLine("The Koans were not where we expecte them to be.");
+				Console.WriteLine("The Koans were not where we expected them to be.");
 				return;
 			}
 			FileSystemWatcher[] watchers = Array.ConvertAll(
