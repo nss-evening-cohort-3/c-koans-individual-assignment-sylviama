@@ -109,15 +109,15 @@ namespace DotNetKoans.CSharp
             bool isAboutControlStatements = false;
             bool isAboutMethods = false;
 
-            var myType = this;
+            var myInstance = this;
 
-            if (myType is Koan)
+            if (myInstance is Koan)
                 isKoan = true;
 
-            if (myType is AboutControlStatements)
+            if (myInstance is AboutControlStatements)
                 isAboutControlStatements = true;
 
-            if (myType is AboutMethods)
+            if (myInstance is AboutMethods)
                 isAboutMethods = true;
 
             Assert.Equal(FILL_ME_IN, isKoan);
