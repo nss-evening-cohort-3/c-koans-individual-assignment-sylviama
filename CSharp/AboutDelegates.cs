@@ -62,22 +62,22 @@ namespace DotNetKoans.CSharp
 			BinaryOp op = math.Add;
 			Assert.Equal(FILL_ME_IN, op(3,3));
 		}
-		private void PassMeTheDelegate(BinaryOp passed)
+		private int PassMeTheDelegate(BinaryOp passed)
 		{
-            Assert.Equal(FILL_ME_IN, passed(3,3));
+            return passed(3, 3);
         }
 		[Koan(6)]
 		public void DelegatesCanBePassed()
 		{
 			MyMath math = new MyMath();
 			BinaryOp op = math.Add;
-			PassMeTheDelegate(op);
+			Assert.Equal(FILL_ME_IN, PassMeTheDelegate(op));
 		}
 		[Koan(7)]
 		public void MethodCanBePassedDirectly()
 		{
 			MyMath math = new MyMath();
-			PassMeTheDelegate(math.Add);
+            Assert.Equal(FILL_ME_IN, PassMeTheDelegate(math.Add));
 		}
 		[Koan(8)]
 		public void DelegatesAreImmutable()
