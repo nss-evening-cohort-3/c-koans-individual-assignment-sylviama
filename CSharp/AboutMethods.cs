@@ -30,6 +30,29 @@ namespace DotNetKoans.CSharp
 
     public class AboutMethods : Koan
     {
+
+        // Methods can accept a variable number of arguments, using the
+        // params keyword
+        public string[] LocalMethodWithVariableParameters(params string[] names)
+        {
+            return names;
+        }
+
+        [Koan(1)]
+        public void LocalMethodsWithVariableParams()
+        {
+            Assert.Equal(FILL_ME_IN, LocalMethodWithVariableParameters("Cory", "Will", "Corey"));
+        }
+
+        //Note how we called the method by saying "this.LocalMethodWithVariableParameters"
+        //That isn't necessary for local methods
+
+        [Koan(2)]
+        public void LocalMethodsWithoutExplicitReceiver()
+        {
+            Assert.Equal(FILL_ME_IN, LocalMethodWithVariableParameters("Cory", "Will", "Corey"));
+        }
+
         //Extension Methods allow us to "add" methods to any class
         //without having to recompile. You only have to reference the
         //namespace the methods are in to use them. Here, since both the
@@ -37,19 +60,27 @@ namespace DotNetKoans.CSharp
         //DotNetKoans.CSharp namespace, AboutMethods can automatically
         //find them
 
-        [Koan(1)]
+        [Koan(3)]
         public void ExtensionMethodsShowUpInTheCurrentClass()
         {
             Assert.Equal(FILL_ME_IN, this.HelloWorld());
         }
 
-        [Koan(2)]
+        //Unlike the local methods above, an explicit receiver is required
+        //for Extension Methods, since Extension Methods need an instance
+        //variable. So, this wouldn't work, giving a compile-time error:
+        //Assert.Equal(FILL_ME_IN, HelloWorld());
+
+        [Koan(4)]
         public void ExtensionMethodsWithParameters()
         {
             Assert.Equal(FILL_ME_IN, this.SayHello("Cory"));
         }
 
-        [Koan(3)]
+        //Any of the parameter things you can do with
+        //extension methods you can also do with local methods
+
+        [Koan(5)]
         public void ExtensionMethodsWithVariableParameters()
         {
             Assert.Equal(FILL_ME_IN, this.MethodWithVariableArguments("Cory", "Will", "Corey"));
@@ -59,39 +90,11 @@ namespace DotNetKoans.CSharp
         //the name of the class they are extending. For example, 
         //we can "extend" the string class like so:
 
-        [Koan(4)]
+        [Koan(6)]
         public void ExtendingCoreClasses()
         {
             Assert.Equal(FILL_ME_IN, "Cory".SayHi());
         }
-
-        //Of course, any of the parameter things you can do with 
-        //extension methods you can also do with local methods
-
-        private string[] LocalMethodWithVariableParameters(params string[] names)
-        {
-            return names;
-        }
-
-        [Koan(5)]
-        public void LocalMethodsWithVariableParams()
-        {
-            Assert.Equal(FILL_ME_IN, this.LocalMethodWithVariableParameters("Cory", "Will", "Corey"));
-        }
-
-        //Note how we called the method by saying "this.LocalMethodWithVariableParameters"
-        //That isn't necessary for local methods
-
-        [Koan(6)]
-        public void LocalMethodsWithoutExplicitReceiver()
-        {
-            Assert.Equal(FILL_ME_IN, LocalMethodWithVariableParameters("Cory", "Will", "Corey"));
-        }
-
-        //But it is required for Extension Methods, since it needs
-        //an instance variable. So this wouldn't work, giving a
-        //compile-time error:
-        //Assert.Equal(FILL_ME_IN, MethodWithVariableArguments("Cory", "Will", "Corey"));
 
         class InnerSecret
         {
