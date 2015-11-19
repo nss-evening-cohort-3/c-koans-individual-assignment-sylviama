@@ -7,17 +7,17 @@ namespace DotNetKoans.CSharp
 {
     public static class ExtensionMethods
     {
-        public static string HelloWorld(this Koan koan)
+        public static string HelloWorld(this Koan me)
         {
             return "Hello!";
         }
 
-        public static string SayHello(this Koan koan, string name)
+        public static string SayHello(this Koan me, string name)
         {
             return String.Format("Hello, {0}!", name);
         }
 
-        public static string[] MethodWithVariableArguments(this Koan koan, params string[] names)
+        public static string[] MethodWithVariableArguments(this Koan me, params string[] names)
         {
             return names;
         }
