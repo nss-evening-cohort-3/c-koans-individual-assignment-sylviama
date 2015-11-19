@@ -86,6 +86,10 @@ namespace AutoKoanRunner
 				build.StartInfo.CreateNoWindow = true;
 				build.Start();
 				build.WaitForExit();
+				if(build.ExitCode != 0)
+				{
+					Console.WriteLine("There was a build error.  Please check your code and try again.");
+				}
 			}
 			return false;
 		}
