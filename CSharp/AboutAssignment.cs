@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DotNetKoans.CSharp
 {
-    public class AboutArrayAssignment : Koan
+    public class AboutAssignment : Koan
     {
         //Parallel Assignments are a feature in Ruby which allow one
         //to set multiple variables at once using an array syntax. e.g.

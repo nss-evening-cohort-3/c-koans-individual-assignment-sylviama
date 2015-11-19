@@ -10,12 +10,12 @@
 				"DotNetKoans.CSharp.AboutAsserts",
 				"DotNetKoans.CSharp.AboutNil",
 				"DotNetKoans.CSharp.AboutArrays",
-				"DotNetKoans.CSharp.AboutArrayAssignment",
+				"DotNetKoans.CSharp.AboutGenericContainers",
+				"DotNetKoans.CSharp.AboutAssignment",
 				"DotNetKoans.CSharp.AboutStrings",
 				"DotNetKoans.CSharp.AboutInheritance",
 				"DotNetKoans.CSharp.AboutMethods",
 				"DotNetKoans.CSharp.AboutControlStatements",
-				"DotNetKoans.CSharp.AboutGenericContainers",
 				"DotNetKoans.CSharp.AboutDelegates",
 				"DotNetKoans.CSharp.AboutLambdas"
                 };
