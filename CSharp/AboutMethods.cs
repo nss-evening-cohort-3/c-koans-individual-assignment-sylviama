@@ -98,7 +98,7 @@ namespace DotNetKoans.CSharp
             public static string Key() { return "Key"; }
             public string Secret() { return "Secret"; }
             protected string SuperSecret() { return "This is secret"; }
-            private string SooperSeekrit() { return "No one will find me!"; }
+            private string TopSecret() { return "No one will find me!"; }
         }
 
         class StateSecret : InnerSecret
@@ -150,7 +150,7 @@ namespace DotNetKoans.CSharp
         {
             InnerSecret secret = new InnerSecret();
             string superSecretMessage = secret.GetType()
-                .GetMethod("SooperSeekrit", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .GetMethod("TopSecret", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .Invoke(secret, null) as string;
             Assert.Equal(FILL_ME_IN, superSecretMessage);
         }
