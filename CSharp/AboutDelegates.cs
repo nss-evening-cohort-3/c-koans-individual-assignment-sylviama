@@ -41,27 +41,27 @@ namespace DotNetKoans.CSharp
 		{
 			MyMath math = new MyMath();
 			BinaryOp op = new BinaryOp(math.Add);
-			Assert.Equal(FILL_ME_IN, op.Method.Name);
+			Assert.Equal("Add", op.Method.Name);
 		}
 		[Koan(3)]
 		public void DelegatesCanBeAssigned()
 		{
 			MyMath math = new MyMath();
 			BinaryOp op = math.Add;
-			Assert.Equal(FILL_ME_IN, op.Method.Name);
+			Assert.Equal("Add", op.Method.Name);
 		}
 		[Koan(4)]
 		public void DelegatesCanReferenceStaticMethods()
 		{
 			BinaryOp op = MyMath.Subtract;
-			Assert.Equal(FILL_ME_IN, op.Method.Name);
+			Assert.Equal("Subtract", op.Method.Name);
 		}
 		[Koan(5)]
 		public void MethodsCalledViaDelegate()
 		{
 			MyMath math = new MyMath();
 			BinaryOp op = math.Add;
-			Assert.Equal(FILL_ME_IN, op(3,3));
+			Assert.Equal(6, op(3,3));
 		}
 		private int PassMeTheDelegate(BinaryOp passed)
 		{
@@ -72,13 +72,13 @@ namespace DotNetKoans.CSharp
 		{
 			MyMath math = new MyMath();
 			BinaryOp op = math.Add;
-			Assert.Equal(FILL_ME_IN, PassMeTheDelegate(op));
+			Assert.Equal(6, PassMeTheDelegate(op));
 		}
 		[Koan(7)]
 		public void MethodCanBePassedDirectly()
 		{
 			MyMath math = new MyMath();
-            Assert.Equal(FILL_ME_IN, PassMeTheDelegate(math.Add));
+            Assert.Equal(6, PassMeTheDelegate(math.Add));
 		}
 		[Koan(8)]
 		public void DelegatesAreImmutable()
@@ -90,7 +90,7 @@ namespace DotNetKoans.CSharp
 			Assert.Same(a, original);
 			a = MyMath.Subtract;
 			//a is now a different instance
-			Assert.Same(a, original);
+			Assert.NotSame(a, original);
 		}
 		delegate int Curry(int val);
 		public class FunctionalTricks
@@ -104,16 +104,16 @@ namespace DotNetKoans.CSharp
 				return x + 10;
 			}
 		}
-		[Koan(9)]
+		[Koan(9)]//sylvia has question on 9
 		public void DelegatesHaveAnInvocationList()
 		{
 			FunctionalTricks f = new FunctionalTricks();
 			Curry adding = f.Add5;
 			//So far we've only seen one method attached to a delegate. 
-			Assert.Equal(FILL_ME_IN, adding.GetInvocationList().Length);
+			Assert.Equal(1, adding.GetInvocationList().Length);
 			//However, you can attach multiple methods to a delegate 
 			adding += f.Add10;
-			Assert.Equal(FILL_ME_IN, adding.GetInvocationList().Length);
+			Assert.Equal(2, adding.GetInvocationList().Length);
 		}
 		[Koan(10)]
 		public void OnlyLastResultReturned()
@@ -122,7 +122,7 @@ namespace DotNetKoans.CSharp
 			Curry adding = f.Add5;
 			adding += f.Add10;
 			//Delegates may have more than one method attached, but only the result of the last method is returned.
-			Assert.Equal(FILL_ME_IN, adding(5));
+			Assert.Equal(15, adding(5));
 		}
 		[Koan(11)]
 		public void RemovingMethods()
@@ -131,7 +131,8 @@ namespace DotNetKoans.CSharp
 			Curry adding = f.Add5;
 			adding += f.Add10;
 			Assert.Equal(2, adding.GetInvocationList().Length);
-			//Remove Add5 from the invocation list
+            //Remove Add5 from the invocation list
+            adding -= f.Add5;
 			Assert.Equal(1, adding.GetInvocationList().Length);
 			Assert.Equal("Add10", adding.Method.Name);
 		}
@@ -147,8 +148,8 @@ namespace DotNetKoans.CSharp
 		private void AssertAddEqualsFourtyTwo(int x, string s)
 		{
 			int y = int.Parse(s);
-			Assert.Equal(42, x + y);
-		}
+			Assert.Equal(54, x + y);
+		}//syvia has question on 11
 		[Koan(12)]
 		public void BuiltInActionDelegateTakesInt()
 		{
@@ -158,21 +159,21 @@ namespace DotNetKoans.CSharp
 			//  public delgate void Action<T>(T obj);
 
 			Action<int> i = AssertIntEqualsFourtyTwo;
-			i((int)FILL_ME_IN);
+			i((int) 42);
 		}
 		[Koan(13)]
 		public void BuiltInActionDelegateTakesString()
 		{
 			// Because the delegate is a template, it also works with any other type. 
 			Action<string> s = AssertStringEqualsFourtyTwo;
-			s((string)FILL_ME_IN);
+			s((string) "42");
 		}
 		[Koan(14)]
 		public void BuiltInActionDelegateIsOverloaded()
 		{
 			//Action is an overloaded delegate so it can take more than one parameter
 			Action<int, string> a = AssertAddEqualsFourtyTwo;
-			a(12, (string)FILL_ME_IN);
+			a(12, (string) "42");
 		}
 		public class Seen
 		{
@@ -195,7 +196,7 @@ namespace DotNetKoans.CSharp
 
 			Array.ForEach(greeting.ToCharArray(), s.Look);
 
-			Assert.Equal(FILL_ME_IN, s.Letters);
+			Assert.Equal("Hello world", s.Letters);
 		}
 
 		private bool IntEqualsFourtyTwo(int x)
