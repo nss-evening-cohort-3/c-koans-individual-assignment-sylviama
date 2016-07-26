@@ -127,27 +127,27 @@ namespace DotNetKoans.CSharp
 		{
 			List<int> list = new List<int> { 1, 2, 3 };
 			//You cannot attempt to get data that doesn't exist
-			Assert.Throws(typeof(FillMeIn), delegate() { int x = list[3]; });
+			Assert.Throws(typeof(System.ArgumentOutOfRangeException), delegate() { int x = list[3]; });
 		}
 		[Koan(12)]
 		public void ConvertingToFixedSizeArray()
 		{
 			List<int> list = new List<int> { 1, 2, 3 };
-			Assert.Equal(FILL_ME_IN, list.ToArray());
+			Assert.Equal(new int[]{1,2,3}, list.ToArray());
 		}
 		[Koan(13)]
 		public void InsertingInTheMiddle()
 		{
 			List<int> list = new List<int> { 1, 2, 3 };
 			list.Insert(1, 6);
-			Assert.Equal(FILL_ME_IN, list.ToArray());
+			Assert.Equal(new int[] {1,6,2,3 }, list.ToArray());
 		}
 		[Koan(14)]
 		public void RemovingItems()
 		{
 			List<int> list = new List<int> { 2, 1, 2, 3 };
 			list.Remove(2);
-			Assert.Equal(FILL_ME_IN, list.ToArray());
+			Assert.Equal(new int[] {1,2,3 }, list.ToArray());
 		}
 
 		[Koan(15)]
@@ -156,25 +156,25 @@ namespace DotNetKoans.CSharp
 			var array = new[] { 1, 2 };
 			Stack stack = new Stack(array);
 			stack.Push("last");
-			Assert.Equal(FILL_ME_IN, stack.ToArray());
+			Assert.Equal(new Object[] {"last",2,1}, stack.ToArray());
 			var poppedValue = stack.Pop();
-			Assert.Equal(FILL_ME_IN, poppedValue);
-			Assert.Equal(FILL_ME_IN, stack.ToArray());
+			Assert.Equal("last", poppedValue);
+			Assert.Equal(new Object[] {2,1}, stack.ToArray());
 		}
 
 		[Koan(16)]
 		public void GenericStackPushPop()
 		{
 			var stack = new Stack<int>();
-			Assert.Equal(FILL_ME_IN, stack.Count);
+			Assert.Equal(0, stack.Count);
 
 			stack.Push(42);
-			Assert.Equal(FILL_ME_IN, stack.Count);
+			Assert.Equal(1, stack.Count);
 
 			int x = stack.Pop();
-			Assert.Equal(FILL_ME_IN, x);
+			Assert.Equal(42, x);
 
-			Assert.Equal(FILL_ME_IN, stack.Count);
+			Assert.Equal(0, stack.Count);
 		}
 		[Koan(17)]
 		public void StackOrder()
@@ -184,16 +184,16 @@ namespace DotNetKoans.CSharp
 			stack.Push(2);
 			stack.Push(3);
 
-			Assert.Equal(FILL_ME_IN, stack.ToArray());
+			Assert.Equal(new int[] {3,2,1}, stack.ToArray());
 		}
 		[Koan(18)]
 		public void PeekingIntoAQueue()
 		{
 			Queue<string> queue = new Queue<string>();
 			queue.Enqueue("one");
-			Assert.Equal(FILL_ME_IN, queue.Peek());
+			Assert.Equal("one", queue.Peek());
 			queue.Enqueue("two");
-			Assert.Equal(FILL_ME_IN, queue.Peek());
+			Assert.Equal("one", queue.Peek());
 		}
 		[Koan(19)]
 		public void RemovingItemsFromTheQueue()
@@ -201,8 +201,8 @@ namespace DotNetKoans.CSharp
 			Queue<string> queue = new Queue<string>();
 			queue.Enqueue("one");
 			queue.Enqueue("two");
-			Assert.Equal(FILL_ME_IN, queue.Dequeue());
-			Assert.Equal(FILL_ME_IN, queue.Count);
+			Assert.Equal("one", queue.Dequeue());
+			Assert.Equal(1, queue.Count);
 		}
 		[Koan(20)]
 		public void Shifting()
@@ -215,25 +215,25 @@ namespace DotNetKoans.CSharp
 			var list = new LinkedList<string>(array);
 
 			list.AddFirst("Say");
-			Assert.Equal(FILL_ME_IN, list.ToArray());
+			Assert.Equal(new string[] {"Say","Hello", "World" }, list.ToArray());
 
 			list.RemoveLast();
-			Assert.Equal(FILL_ME_IN, list.ToArray());
+			Assert.Equal(new string[]{"Say","Hello" }, list.ToArray());
 
 			list.RemoveFirst();
-			Assert.Equal(FILL_ME_IN, list.ToArray());
+			Assert.Equal(new string[] {"Hello"}, list.ToArray());
 
 			list.AddAfter(list.Find("Hello"), "World");
-			Assert.Equal(FILL_ME_IN, list.ToArray());
+			Assert.Equal(new string[] {"Hello", "World" }, list.ToArray());
 		}
 		[Koan(21)]
 		public void AddingToADictionary()
 		{
 			//Dictionary<TKey, TValue> is .Net's key value store. The key and the value do not need to be the same types.
 			Dictionary<int, string> dictionary = new Dictionary<int, string>();
-			Assert.Equal(FILL_ME_IN, dictionary.Count);
+			Assert.Equal(0, dictionary.Count);
 			dictionary[1] = "one";
-			Assert.Equal(FILL_ME_IN, dictionary.Count);
+			Assert.Equal(1, dictionary.Count);
 		}
 		[Koan(22)]
 		public void AccessingData()
@@ -242,8 +242,8 @@ namespace DotNetKoans.CSharp
 			dictionary["one"] = "uno";
 			dictionary["two"] = "dos";
 			//The most common way to locate data is with the subscript notation.
-			Assert.Equal(FILL_ME_IN, dictionary["one"]);
-			Assert.Equal(FILL_ME_IN, dictionary["two"]);
+			Assert.Equal("uno", dictionary["one"]);
+			Assert.Equal("dos", dictionary["two"]);
 		}
 		[Koan(23)]
 		public void AccessingDataNotAdded()
