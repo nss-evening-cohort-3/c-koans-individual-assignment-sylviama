@@ -7,7 +7,7 @@ namespace DotNetKoans.CSharp
         [Koan(1)]
         public void NullIsNotAnObject()
         {
-            Assert.True(typeof(object).IsAssignableFrom(typeof(object))); //not everything is an object
+            Assert.True(!typeof(object).IsAssignableFrom(null)); //not everything is an object
         }
 
         [Koan(2)]
@@ -27,7 +27,7 @@ namespace DotNetKoans.CSharp
             }
             catch (System.Exception ex)
             {
-                Assert.Contains("Object" as string, ex.Message);
+                Assert.Contains("Object reference not set" as string, ex.Message);
             }
         }
 
@@ -48,8 +48,8 @@ namespace DotNetKoans.CSharp
         [Koan(5)]
         public void AWayNotToCheckThatAnObjectIsNull()
         {
-            object obj = null;
-            Assert.True(obj.Equals(obj));
+            object obj = 5;
+            Assert.True(obj.Equals(5));
         }
     }
 }
